@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="abf0b553-3d84-4059-81d6-c2c93a70b3dc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/Assets/images/i9.jpg" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1vRtYznoB7H2tliJS8oHtGIpG6M" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test_proj/Assets/images" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aryan\OneDrive\Documents\GitHub\flutter_prac\test_proj\Assets\images" />
+      <recent name="C:\Users\Aryan\OneDrive\Documents\GitHub\flutter_prac\test_proj" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aryan\OneDrive\Documents\GitHub\flutter_prac\test_proj\Assets\images" />
+      <recent name="C:\Users\Aryan\OneDrive\Documents\GitHub\flutter_prac\test_proj\Assets\fonts" />
+      <recent name="C:\Users\Aryan\OneDrive\Documents\GitHub\flutter_prac\test_proj\Assets" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abf0b553-3d84-4059-81d6-c2c93a70b3dc" name="Default Changelist" comment="" />
+      <created>1626536780204</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1626536780204</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="2" key="#Plugins" timestamp="1626772017250">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="233" y="2" key="#Plugins/0.0.1280.720@0.0.1280.720" timestamp="1626772017250" />
+    <state x="121" y="0" key="#Project_Structure" timestamp="1626803771570">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="121" y="0" key="#Project_Structure/0.0.1280.720@0.0.1280.720" timestamp="1626803771570" />
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626551190596">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1626551190596" />
+    <state x="93" y="93" width="1095" height="535" key="AVDManager" timestamp="1626622792118">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="93" y="93" width="1095" height="535" key="AVDManager/0.0.1280.720@0.0.1280.720" timestamp="1626622792117" />
+    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1626603065441">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1626603065441" />
+    <state width="1236" height="113" key="GridCell.Tab.0.bottom" timestamp="1626620264054">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="113" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1626620264054" />
+    <state width="1236" height="113" key="GridCell.Tab.0.center" timestamp="1626620264054">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="113" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1626620264054" />
+    <state width="1236" height="113" key="GridCell.Tab.0.left" timestamp="1626620264052">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="113" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1626620264052" />
+    <state width="1236" height="113" key="GridCell.Tab.0.right" timestamp="1626620264054">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="113" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1626620264054" />
+    <state x="142" y="6" key="SettingsEditor" timestamp="1626732100367">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="142" y="6" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1626732100367" />
+    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626740450506">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1626740450506" />
+    <state x="298" y="161" key="run.anything.popup" timestamp="1626800553673">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="298" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1626800553673" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1626773287951">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1626773287951" />
+  </component>
+</project>
