@@ -27,137 +27,417 @@ class _ActivityScreenState extends State<ActivityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white70,
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed('/launch');
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
-          ),
+        backgroundColor: Colors.white,
+        title: Row(
+          children: [TextButton(onPressed: () {}, child: Text("Following"))],
         ),
       ),
-      body: Center(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Instagram",
-                  style: TextStyle(fontSize: 40, fontFamily: "Billabong"),
-                ),
-                Container(
-                  height: 45,
-                ),
-                TextField(
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(
-                        width: 2.0,
-                        color: Colors.grey.shade700,
-                      ),
-                    ),
-                    contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    // border
-                    labelText: "Username",
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ListTile(
+              leading: Text("Follow requests"),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                top: BorderSide(color: Colors.grey, width: 1.0),
+                bottom: BorderSide(color: Colors.grey, width: 1.0),
+              )),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text("New"),
                   ),
-                ),
-                Container(
-                  height: 10,
-                ),
-                TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                        borderSide: BorderSide(
-                          width: 2.0,
-                          color: Colors.grey.shade700,
-                        )),
-                    contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    labelText: "Password",
-                  ),
-                ),
-                // TextField()],
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          child: Text("Forgot Password?",
-                              style: TextStyle(
-                                color: Colors.blue.shade700,
-                              )),
-                          onPressed: () {},
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
                         ),
                       ),
                     ),
-                  ],
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    minimumSize: Size(double.infinity, 10),
-                    backgroundColor: Colors.blue.shade400,
-                  ),
-                  // style: ButtonStyle(
-                  //   backgroundColor: MaterialStateProperty.all(Colors.blue.shade300),
-                  // ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/home');
-                  },
-                  child: Text("Log in",
-                      style: TextStyle(
-                        color: Colors.white70,
-                      )),
-                ),
-                Container(
-                  height: 40,
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 10.0, right: 15.0),
-                      child: Divider(
-                        height: 2,
-                        color: Colors.grey.shade400,
+                    title: Text("JustAry27 liked your photo. 3h"),
+                    trailing: Container(
+                      height: 45,
+                      width: 40,
+                      child: Image(
+                        image: AssetImage("Assets/images/aloy.gif"),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  Text("OR"),
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 15.0, right: 10.0),
-                      child: Divider(
-                        height: 2,
-                        color: Colors.grey.shade400,
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(color: Colors.grey, width: 1.0),
+              )),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text("Today"),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
+                        ),
+                      ),
+                    ),
+                    title: Text(
+                        "JustAry27, Aryan and 25 others liked your photo. 10d"),
+                    trailing: Container(
+                      height: 45,
+                      width: 40,
+                      child: Image(
+                        image: AssetImage("Assets/images/aloy.gif"),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ]),
-                Container(
-                  height: 50,
+                ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border(
+                bottom: BorderSide(color: Colors.grey, width: 1.0),
+              )),
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Text("This Week"),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
+                        ),
+                      ),
+                    ),
+                    title: Text("JustAry27 mentioned you in a comment:\n"
+                        "@justary27 Beautiful pic! . 3d"),
+                    subtitle: Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.favorite_border_rounded)),
+                        TextButton(onPressed: () {}, child: Text("Reply")),
+                      ],
+                    ),
+                    trailing: Container(
+                      height: 45,
+                      width: 40,
+                      child: Image(
+                        image: AssetImage("Assets/images/aloy.gif"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
+                        ),
+                      ),
+                    ),
+                    title: Text("JustAry27 started following you. 4d"),
+                    trailing: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          side: BorderSide(color: Colors.grey, width: 1.0)),
+                      child: Text(
+                        "Message",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
+                        ),
+                      ),
+                    ),
+                    title: Text("JustAry27 started following you. 4d"),
+                    trailing: TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          side: BorderSide(color: Colors.grey, width: 1.0)),
+                      child: Text(
+                        "Message",
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 15,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Colors.white,
+                        child: CircleAvatar(
+                          radius: 13,
+                          backgroundImage:
+                              ExactAssetImage("Assets/images/aloy-frozen.gif"),
+                        ),
+                      ),
+                    ),
+                    title: Text("Aryan started following you. 6d"),
+                    trailing: Container(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.blueAccent),
+                        onPressed: () {},
+                        child: Text(
+                          "Follow",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                ListTile(
+                  leading: Text("This Month"),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account?"),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/signup');
-                        },
-                        child: Text("Sign up")),
-                  ],
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 15,
+                    child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 13,
+                        backgroundImage:
+                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      ),
+                    ),
+                  ),
+                  title: Text("JustAry27 liked your photo. 3h"),
+                  trailing: Container(
+                    height: 45,
+                    width: 40,
+                    child: Image(
+                      image: AssetImage("Assets/images/aloy.gif"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 15,
+                    child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 13,
+                        backgroundImage:
+                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      ),
+                    ),
+                  ),
+                  title: Text("JustAry27 liked your photo. 15d"),
+                  trailing: Container(
+                    height: 45,
+                    width: 40,
+                    child: Image(
+                      image: AssetImage("Assets/images/aloy.gif"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 15,
+                    child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 13,
+                        backgroundImage:
+                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      ),
+                    ),
+                  ),
+                  title: Text("JustAry27 liked your photo. 20d"),
+                  trailing: Container(
+                    height: 45,
+                    width: 40,
+                    child: Image(
+                      image: AssetImage("Assets/images/aloy.gif"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 15,
+                    child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 13,
+                        backgroundImage:
+                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      ),
+                    ),
+                  ),
+                  title: Text("JustAry27 liked your photo. 25d"),
+                  trailing: Container(
+                    height: 45,
+                    width: 40,
+                    child: Image(
+                      image: AssetImage("Assets/images/aloy.gif"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    radius: 15,
+                    child: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 13,
+                        backgroundImage:
+                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      ),
+                    ),
+                  ),
+                  title: Text("JustAry27 liked your photo. 27d"),
+                  trailing: Container(
+                    height: 45,
+                    width: 40,
+                    child: Image(
+                      image: AssetImage("Assets/images/aloy.gif"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ],
             ),
-          )),
-    );
-  }
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (int) {},
+        items: [
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/home');
+              },
+              icon:Icon(Icons.home_filled),
+              color: Colors.black,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/search');
+              },
+              icon: Icon(Icons.search_rounded),
+              color: Colors.black,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_box_outlined,
+              color: Colors.black,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/activity');
+              },
+              icon: Icon(Icons.favorite_border_rounded),
+              color: Colors.black,
+            ),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+              icon: CircleAvatar(
+                backgroundColor: Colors.black,
+                radius: 13,
+                child: CircleAvatar(
+                  radius: 12.5,
+                  backgroundColor: Colors.white,
+                  child: IconButton(
+                    onPressed: (){
+                      Navigator.of(context).pushNamed('/profile');
+                    },
+                    icon: CircleAvatar(
+                      radius: 11,
+                      backgroundImage:
+                      ExactAssetImage("Assets/images/aloy-op.jpg"),
+                    ),
+                  ),
+                ),
+              ),
+              label: "")
+        ],
+      ),
+    );  }
 }
