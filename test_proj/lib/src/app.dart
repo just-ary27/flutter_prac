@@ -22,16 +22,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: LaunchScreen(),
-      // routes: {
-      //   '/dm': (_) => DMScreen(),
-      //   '/login': (_) => LoginScreen(),
-      //   '/signup': (_) => SignUpScreen(),
-      //   '/launch': (_) => LaunchScreen(),
-      //   '/home': (_) => HomeScreen(),
-      //   '/search':(_) => SearchScreen(),
-      //   '/activity':(_) => ActivityScreen(),
-      //   '/profile': (_) => ProfileScreen()
-      // },
       initialRoute: "/",
       onGenerateRoute: RouteGenerator.generate,
     );

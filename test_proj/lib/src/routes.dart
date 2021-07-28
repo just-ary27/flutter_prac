@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_proj/src/screens/activity.dart';
 import 'package:test_proj/src/screens/dm.dart';
+import 'package:test_proj/src/screens/editprof.dart';
 import 'package:test_proj/src/screens/home.dart';
 import 'package:test_proj/src/screens/launch.dart';
 import 'package:test_proj/src/screens/login.dart';
@@ -27,6 +28,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => SignUpScreen());
       case "/login":
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case "/editprof":
+        return MaterialPageRoute(builder: (_) => EditProfScreen());
       case "/":
         return MaterialPageRoute(builder: (_) => LaunchScreen());
       default:

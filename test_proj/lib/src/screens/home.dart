@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_proj/src/screens/login.dart';
+
+import 'editprof.dart';
 
 final gridAssets = [
   "Assets/images/aloy.gif",
@@ -118,12 +121,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: CircleAvatar(
                             radius: 18,
                             backgroundImage:
-                            ExactAssetImage("Assets/images/aloy-op.jpg"),
+                            NetworkImage(imageUrl),
                           ),
                         ),
                       ),
                       title: Text(
-                        "JustAry27",
+                        profData['username'],
                         style: TextStyle(fontSize: 12),
                       ),
                       subtitle: Text(
@@ -184,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Container(
                         child: Text(
-                          "JustAry27",
+                          profData['username'],
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                         padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
@@ -257,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: CircleAvatar(
                       radius: 11,
                       backgroundImage:
-                      ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      NetworkImage(imageUrl),
                     ),
                   ),
                 ),

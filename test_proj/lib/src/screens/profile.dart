@@ -1,4 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'editprof.dart';
+import 'login.dart';
+import '../database.dart';
+
 
 final gridAssets = [
   "Assets/images/aloy.gif",
@@ -24,6 +29,27 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
+  final FirebaseAuth logOutInstance = FirebaseAuth.instance;
+  late Database db;
+  List docs=[];
+
+  initialise() {
+    db = Database();
+    db.initialise();
+    db.read().then((value) => {
+      setState(() {
+        docs = value;
+      })
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initialise();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.black,
                   ),
                   label: Text(
-                    "JustAry27",
+                    profData['username'],
                     style: TextStyle(color: Colors.black),
                   )),
               IconButton(
@@ -52,6 +78,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
+        actions: [
+          IconButton(
+            color: Colors.black,
+              onPressed: (){
+                try{
+                  logOutInstance.signOut();
+                  Navigator.of(context).pushNamed('/login');
+                } catch(e){
+                  print(e);
+                }
+              },
+              icon: Icon(Icons.power_settings_new_rounded),
+          ),
+        ],
       ),
       body: Column(children: [
         Container(
@@ -70,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: CircleAvatar(
                         radius: 60,
                         backgroundImage:
-                        ExactAssetImage("Assets/images/aloy-op.jpg"),
+                        NetworkImage(imageUrl),
                       ),
                     ),
                   ),
@@ -85,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "27",
+                                profData["postCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -113,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "270",
+                                profData["followerCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -141,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "300",
+                                profData["followingCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -168,9 +208,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Aryan Ranjan"),
-                    Text("Digital goodies designer @pixsellz"),
-                    Text("Learning Flutter"),
+                    Text(profData["actualName"],),
+                    Text(
+                      profData["bio"],
+                    ),
                   ],
                 ),
               ),
@@ -178,7 +219,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 20,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/editprof');
+                  print(docs);
+                },
                 child: Text(
                   "Edit Profile",
                   style: TextStyle(
@@ -273,7 +317,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: CircleAvatar(
                       radius: 11,
                       backgroundImage:
-                      ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      NetworkImage(imageUrl),
                     ),
                   ),
                 ),

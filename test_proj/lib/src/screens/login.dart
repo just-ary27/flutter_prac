@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../database.dart';
+
+Map profData ={};
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -8,6 +12,39 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  late String _Email , _password;
+
+  final FirebaseAuth loginInstance = FirebaseAuth.instance;
+
+  final FirebaseAuth signUpInstance = FirebaseAuth.instance;
+
+  late Database db;
+  List docs = [];
+  initialise(){
+    db = Database();
+    db.initialise();
+    db.read().then((value) => {
+      setState(() {
+        docs = value;
+      })
+    });
+  }
+
+  ProfData(){
+    for (var prof in docs){
+      if (_Email== prof['email']){
+        profData = prof;
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initialise();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                     // border
-                    labelText: "Username",
+                    hintText: "Username",
                   ),
+                  onChanged: (value){
+                    _Email = value;
+                  },
                 ),
                 Container(
                   height: 10,
@@ -66,8 +106,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.grey.shade700,
                         )),
                     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    labelText: "Password",
+                    hintText: "Password",
                   ),
+                    onChanged: (value){
+                      _password = value;
+                    }
                 ),
                 // TextField()],
                 Row(
@@ -91,11 +134,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     minimumSize: Size(double.infinity, 10),
                     backgroundColor: Colors.blue.shade400,
                   ),
-                  // style: ButtonStyle(
-                  //   backgroundColor: MaterialStateProperty.all(Colors.blue.shade300),
-                  // ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/home');
+                  onPressed: () async {
+                    try{
+                      await loginInstance.signInWithEmailAndPassword(email: _Email, password: _password);
+                      ProfData();
+                      print(docs);
+                      print(profData);
+                      Navigator.of(context).pushNamed('/home');
+                    } on FirebaseAuthException catch (e) {
+                      print(e.code);
+                      if (e.code == 'user-not-found') {
+                        final emailErrorbar = SnackBar(
+                          content: Text("No user found for that email."),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(emailErrorbar);
+                      } else if (e == 'wrong-password') {
+                        final passwordErrorBar = SnackBar(
+                          content: Text("Wrong password provided for that user."),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(passwordErrorBar);
+                      }
+                    }
                   },
                   child: Text("Log in",
                       style: TextStyle(

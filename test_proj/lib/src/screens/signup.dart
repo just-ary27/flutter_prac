@@ -1,4 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
+import 'package:test_proj/src/database.dart';
+
+import 'launch.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -8,6 +13,41 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+
+  late String _Email , _password, _cpassword, _username;
+
+  final FirebaseAuth signUpInstance = FirebaseAuth.instance;
+
+  late Database db;
+
+  List docs = [];
+
+  initialise(){
+    db = Database();
+    db.initialise();
+  }
+  contentLoader(){
+    db.read().then((value) => {
+      setState(() {
+        docs = value;
+      })
+    });
+  }
+
+  ProfData(){
+    for (var prof in docs){
+      print(prof);
+      if (_Email== prof['email']){
+        profData = prof;
+      }
+    }
+  }
+  @override
+  void initState() {
+    super.initState();
+    initialise();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +92,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     // border
                     labelText: "Username",
                   ),
+                  onChanged: (value){
+                    _username=value;
+                  },
                 ),
                 Container(
                   height: 10,
@@ -66,8 +109,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: Colors.grey.shade700,
                         )),
                     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    labelText: "Password",
+                    hintText: "Password",
                   ),
+                  onChanged: (value){
+                    _password=value;
+                  },
                 ),
                 Container(
                   height: 10,
@@ -84,6 +130,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                     labelText: "Confirm Password",
                   ),
+                  onChanged: (value){
+                    _cpassword=value;
+                  },
                 ),
                 Container(
                   height: 10,
@@ -98,8 +147,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: Colors.grey.shade700,
                         )),
                     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                    labelText: "Email ID",
+                    hintText: "Email ID",
                   ),
+                  onChanged: (value){
+                    _Email= value;
+                  },
                 ),
                 // TextField()],
                 Container(
@@ -110,8 +162,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       minimumSize: Size(double.infinity, 15),
                       backgroundColor: Colors.blue.shade400,
                       textStyle: TextStyle(color: Colors.white)),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/home');
+                  onPressed: () async {
+                    try {
+                      if (_cpassword==_password){
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                          email: _Email,
+                          password: _password,
+                        );
+                        db.create(_username,_Email);
+                        contentLoader();
+                        ProfData();
+                        print(profData);
+                        Navigator.of(context).pushNamed('/home');
+                      }else{
+                        final passwordCheck = SnackBar(
+                          content: Text("Passwords don't match"),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(passwordCheck);
+                      }
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        final weakPasswordE = SnackBar(
+                          content: Text("The password provided is too weak."),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(weakPasswordE);
+                      } else if (e.code == 'email-already-in-use') {
+                        final AccountExi = SnackBar(
+                          content: Text("The account already exists for that email."),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(AccountExi);
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
                   },
                   child: Text(
                     "Sign up",
@@ -158,7 +241,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ],
             ),
-          )),
+          )
+      ),
     );
   }
 }

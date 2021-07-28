@@ -29,8 +29,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf0b553-3d84-4059-81d6-c2c93a70b3dc" name="Default Changelist" comment="Updated routes, separated different screens to files">
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/database.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/pubspec.yaml" afterDir="false" />
     </list>
     <list id="df542ae6-61e0-437c-aa60-a241bd3957ca" name="Updated routes, separated different screens to files" comment="" />
     <option name="SHOW_DIALOG" value="false" />
