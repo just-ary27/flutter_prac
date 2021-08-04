@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'editprof.dart';
 import 'login.dart';
 import '../database.dart';
 
@@ -42,7 +41,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
         docs = value;
       })
     });
-  }
+    db.readIndPostlink(profData['id']).then((value) => {
+      setState(() {
+        indiPostData = value;
+      })
+    });
+    db.postDataProvider().then((value) => {
+      setState(() {
+        allPosts = value;
+      })
+    });
+}
 
   @override
   void initState() {
@@ -61,7 +70,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      print("Reloaded!");
+                    });
+                  },
                   icon: Icon(
                     Icons.lock,
                     color: Colors.black,
@@ -85,6 +98,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 try{
                   logOutInstance.signOut();
                   Navigator.of(context).pushNamed('/login');
+                  profData = {};
+                  indiPostData = [];
                 } catch(e){
                   print(e);
                 }
@@ -110,7 +125,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: CircleAvatar(
                         radius: 60,
                         backgroundImage:
-                        NetworkImage(imageUrl),
+                        NetworkImage(profData['dp_link']),
                       ),
                     ),
                   ),
@@ -242,7 +257,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: GridView.builder(
             cacheExtent: 9,
             shrinkWrap: true,
-            itemCount: gridAssets.length,
+            itemCount: indiPostData.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),
@@ -254,7 +269,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fit: BoxFit.cover,
                   width: 50,
                   height: 50,
-                  image: AssetImage(gridAssets[index]),
+                  image: NetworkImage(indiPostData[index]['postUrl'].toString()),
                 ),
               );
             },
@@ -262,6 +277,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ]),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 20,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (int) {},
@@ -287,8 +303,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/createPost');
+              },
+              icon: Icon(Icons.add_box_outlined),
               color: Colors.black,
             ),
             label: "",
@@ -317,7 +336,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: CircleAvatar(
                       radius: 11,
                       backgroundImage:
-                      NetworkImage(imageUrl),
+                      NetworkImage(profData['dp_link']),
                     ),
                   ),
                 ),

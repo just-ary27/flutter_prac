@@ -9,7 +9,7 @@ import 'login.dart';
 
 import '../database.dart';
 
-late String imageUrl='https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/users%2Fjustary27%40gmail.com%2Fpfp?alt=media&token=ff4ab78e-454c-4295-8006-ea9576';
+late String imageUrl = profData['dp_link'];
 
 class EditProfScreen extends StatefulWidget {
   const EditProfScreen({Key? key}) : super(key: key);
@@ -26,24 +26,26 @@ class _EditProfScreenState extends State<EditProfScreen> {
       TextEditingController(text: profData['username']);
   TextEditingController Bio = TextEditingController(text: profData['bio']);
   late Database db;
-  List docs= [];
-  initialise(){
+  List docs = [];
+  initialise() {
     db = Database();
     db.initialise();
     db.read().then((value) => {
-      setState(() {
-        docs = value;
-      })
-    });
+          setState(() {
+            docs = value;
+          })
+        });
   }
+
   String _Email = profData['email'];
-  ProfData(){
-    for (var prof in docs){
-      if (_Email== prof['email']){
+  ProfData() {
+    for (var prof in docs) {
+      if (_Email == prof['email']) {
         profData = prof;
       }
     }
   }
+
   uploadImage() async {
     final _storage = FirebaseStorage.instance;
     final _picker = ImagePicker();
@@ -53,18 +55,18 @@ class _EditProfScreenState extends State<EditProfScreen> {
 
     var permissionStatus = await Permission.photos.status;
 
-    if (permissionStatus.isGranted){
+    if (permissionStatus.isGranted) {
       //Select Image
       XFile? image = await _picker.pickImage(source: ImageSource.gallery);
 
-      if (image != null){
+      if (image != null) {
         var file = File(image.path);
         //Upload to Firebase
-        var snapshot = await _storage.ref()
+        var snapshot = await _storage
+            .ref()
             .child('users/${_Email}/pfp')
             .putFile(file)
             .whenComplete(() => null);
-
 
         var downloadUrl = await snapshot.ref.getDownloadURL();
 
@@ -113,7 +115,10 @@ class _EditProfScreenState extends State<EditProfScreen> {
                 _username = User.text;
               });
               db.update(profData['id'],
-                  ActualName: _ActualName, bio: _bio, username: _username);
+                  ActualName: _ActualName,
+                  bio: _bio,
+                  username: _username,
+                  dplink: imageUrl);
               ProfData();
               Navigator.of(context).pushNamed('/profile');
             },
@@ -134,7 +139,6 @@ class _EditProfScreenState extends State<EditProfScreen> {
                 children: [
                   CircleAvatar(
                     radius: 80,
-
                     backgroundImage: NetworkImage(imageUrl),
                   ),
                   TextButton(

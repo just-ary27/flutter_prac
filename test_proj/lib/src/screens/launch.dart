@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-Map profData = {};
-
 class LaunchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

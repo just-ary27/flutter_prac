@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../database.dart';
 
 Map profData ={};
+
+List indiPostData = [];
+List allPosts = [];
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 

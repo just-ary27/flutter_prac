@@ -29,19 +29,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf0b553-3d84-4059-81d6-c2c93a70b3dc" name="Default Changelist" comment="Updated routes, separated different screens to files">
-      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/database.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/createposts.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/database.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/pubspec.yaml" afterDir="false" />
     </list>
     <list id="df542ae6-61e0-437c-aa60-a241bd3957ca" name="Updated routes, separated different screens to files" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,10 +183,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1626816239311" />
-    <state x="298" y="161" key="run.anything.popup" timestamp="1626800553673">
+    <state x="298" y="161" width="672" height="677" key="run.anything.popup" timestamp="1628013323726">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="298" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1626800553673" />
+    <state x="298" y="161" width="672" height="677" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1628013323726" />
     <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1626773287951">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

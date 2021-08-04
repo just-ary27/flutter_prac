@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_proj/src/screens/login.dart';
 
-import 'editprof.dart';
 
 final gridAssets = [
   "Assets/images/aloy.gif",
@@ -84,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: CircleAvatar(
                           radius: 31.5,
                           backgroundImage:
-                          ExactAssetImage("Assets/images/aloy-op.jpg"),
+                              ExactAssetImage("Assets/images/aloy-op.jpg"),
                         ),
                       ),
                     ),
@@ -106,8 +105,11 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView.builder(
             cacheExtent: 1,
             shrinkWrap: true,
-            itemCount: gridAssets.length,
+            itemCount: allPosts.length,
             itemBuilder: (context, index) {
+              bool isLiked = false;
+              var icon = Icons.favorite_border_rounded;
+              var icolor = Colors.black;
               return Column(
                 children: [
                   Container(
@@ -121,12 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: CircleAvatar(
                             radius: 18,
                             backgroundImage:
-                            NetworkImage(imageUrl),
+                                NetworkImage(allPosts[index]['dp_link']),
                           ),
                         ),
                       ),
                       title: Text(
-                        profData['username'],
+                        allPosts[index]['username'],
                         style: TextStyle(fontSize: 12),
                       ),
                       subtitle: Text(
@@ -138,13 +140,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     decoration: BoxDecoration(
                         border: Border.symmetric(
                             horizontal:
-                            BorderSide(width: 0.2, color: Colors.black))),
+                                BorderSide(width: 0.2, color: Colors.black))),
                   ),
                   Container(
-                    height: 650,
+                    height: 600,
                     width: double.infinity,
                     child: Image(
-                      image: AssetImage(gridAssets[index]),
+                      image: NetworkImage(allPosts[index]['postUrl']),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -152,17 +154,41 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
                     child: Row(
                       children: [
-                        IconButton(
-                          icon: Icon(
-                            Icons.favorite_border_rounded,
-                            size: 40,
-                          ),
-                          onPressed: () {
-                            final likebar = SnackBar(
-                              content: Text("You just liked that post!"),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(likebar);
-                          },
+                        Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                icon,
+                                size: 40,
+                                color: icolor,
+                              ),
+                              onPressed: () {
+                                final likebar = SnackBar(
+                                  content: Text("You just liked that post!"),
+                                );
+                                if (isLiked == false) {
+                                  setState(() {
+                                    print("liked");
+                                    icon = Icons.favorite;
+                                    isLiked = true;
+                                    icolor = Colors.pinkAccent;
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(likebar);
+                                  });
+                                } else {
+                                  setState(() {
+                                    print("unliked");
+                                    icon = Icons.favorite_border_rounded;
+                                    isLiked = false;
+                                    icolor = Colors.black;
+                                  });
+                                }
+                              },
+                            ),
+                            Text(allPosts[index]['likeCount'].toString() +
+                                " likes")
+                          ],
+                          crossAxisAlignment: CrossAxisAlignment.center,
                         ),
                         Container(width: 5),
                         IconButton(
@@ -183,20 +209,41 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  Row(
+                  Column(
                     children: [
                       Container(
-                        child: Text(
-                          profData['username'],
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              allPosts[index]['username'],
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Container(
+                              width: 10,
+                            ),
+                            Expanded(
+                                child: Container(
+                              child: Text(allPosts[index]['caption']),
+                            ))
+                          ],
                         ),
-                        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                       ),
-                      Expanded(
-                          child: Container(
-                            child: Text("Great pic! 🔥🔥"),
-                          ))
+                      Container(
+                        padding: EdgeInsets.fromLTRB(15, 0, 20, 5),
+                        child: TextButton(
+                          child: Text(
+                              "View all ${allPosts[index]['commentCount'].toString()} comments",
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontStyle: FontStyle.italic
+                            ),
+                          ),
+                          onPressed: (){},
+                        ),
+                      )
                     ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
                   )
                 ],
               );
@@ -205,6 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
         )
       ]),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 20,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (int) {},
@@ -230,8 +278,11 @@ class _HomeScreenState extends State<HomeScreen> {
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/createPost');
+              },
+              icon: Icon(Icons.add_box_outlined),
               color: Colors.black,
             ),
             label: "",
@@ -260,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: CircleAvatar(
                       radius: 11,
                       backgroundImage:
-                      NetworkImage(imageUrl),
+                      NetworkImage(profData['dp_link']),
                     ),
                   ),
                 ),

@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth_platform_interface/src/firebase_auth_exception.dart';
 import 'package:test_proj/src/database.dart';
+import 'package:test_proj/src/screens/login.dart';
 
-import 'launch.dart';
+import 'login.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -15,6 +16,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
 
   late String _Email , _password, _cpassword, _username;
+
+  String defaultdp = "https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/globals%2Fdefault_avatar.jpg?alt=media&token=6ce0405e-2bb3-492a-aec6-75866a0775d1";
 
   final FirebaseAuth signUpInstance = FirebaseAuth.instance;
 
@@ -169,7 +172,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           email: _Email,
                           password: _password,
                         );
-                        db.create(_username,_Email);
+                        db.create(_username,_Email,defaultdp);
+                        Future.delayed(Duration(seconds: 10));
                         contentLoader();
                         ProfData();
                         print(profData);

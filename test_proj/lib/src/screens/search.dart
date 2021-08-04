@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import 'login.dart';
+
 final gridAssets = [
   "Assets/images/aloy.gif",
   "Assets/images/aloy-frozen.gif",
@@ -120,6 +122,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 20,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         onTap: (int) {},
@@ -145,8 +148,11 @@ class _SearchScreenState extends State<SearchScreen> {
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_box_outlined,
+            icon: IconButton(
+              onPressed: (){
+                Navigator.of(context).pushNamed('/createPost');
+              },
+              icon: Icon(Icons.add_box_outlined),
               color: Colors.black,
             ),
             label: "",
@@ -175,7 +181,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     icon: CircleAvatar(
                       radius: 11,
                       backgroundImage:
-                      ExactAssetImage("Assets/images/aloy-op.jpg"),
+                      NetworkImage(profData['dp_link']),
                     ),
                   ),
                 ),
