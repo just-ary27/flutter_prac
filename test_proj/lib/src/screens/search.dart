@@ -31,7 +31,6 @@ final search_data = [
   '3 Men in a boat'
 ];
 
-
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -46,6 +45,9 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white70,
         title: TextField(
+          onTap: () {
+            Navigator.of(context).pushNamed('/searchProfs');
+          },
           obscureText: false,
           decoration: InputDecoration(
             fillColor: Colors.grey,
@@ -129,17 +131,17 @@ class _SearchScreenState extends State<SearchScreen> {
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/home');
               },
-              icon:Icon(Icons.home_filled),
+              icon: Icon(Icons.home_filled),
               color: Colors.black,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/search');
               },
               icon: Icon(Icons.search_rounded),
@@ -149,7 +151,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/createPost');
               },
               icon: Icon(Icons.add_box_outlined),
@@ -159,7 +161,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/activity');
               },
               icon: Icon(Icons.favorite_border_rounded),
@@ -175,13 +177,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   radius: 12.5,
                   backgroundColor: Colors.white,
                   child: IconButton(
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pushNamed('/profile');
                     },
                     icon: CircleAvatar(
                       radius: 11,
-                      backgroundImage:
-                      NetworkImage(profData['dp_link']),
+                      backgroundImage: NetworkImage(profData['dp_link']),
                     ),
                   ),
                 ),

@@ -1,77 +1,75 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'commentsView.dart';
-import 'home.dart';
-import 'login.dart';
+import 'package:test_proj/src/screens/searchProfs.dart';
+
 import '../database.dart';
+import 'login.dart';
 
-final gridAssets = [
-  "Assets/images/aloy.gif",
-  "Assets/images/aloy-frozen.gif",
-  "Assets/images/i1.jpg",
-  "Assets/images/aloy-op.jpg",
-  "Assets/images/i2.jpg",
-  "Assets/images/i3.jpg",
-  "Assets/images/i4.jpg",
-  "Assets/images/i5.jpg",
-  "Assets/images/i6.jpg",
-  "Assets/images/i7.jpg",
-  "Assets/images/i8.jpg",
-  "Assets/images/i9.jpg"
-];
+List followerList = [];
+bool following = false;
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class viewProfsScreen extends StatefulWidget {
+  const viewProfsScreen({Key? key}) : super(key: key);
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _viewProfsScreenState createState() => _viewProfsScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  final FirebaseAuth logOutInstance = FirebaseAuth.instance;
-  late Database db;
-  List docs = [];
-
-  initialise() {
-    db = Database();
-    db.initialise();
-    db.read().then((value) => {
-          setState(() {
-            docs = value;
-          })
-        });
-    // db.readIndPostlink(profData['id']).then((value) => {
-    //       setState(() {
-    //         indiPostData = value;
-    //       })
-    //     });
-    db.postDataProvider().then((value) => {
-          setState(() {
-            allPosts = value;
-          })
-        });
-    db.readComments(cId).then((value) => {
-          setState(() {
-            posts = value;
-            print(value);
-          })
-        });
-    for (var post in posts) {
-      db.UserSearch(post['userid']).then((value) => setState(() {
-            Commenters.add(value);
-          }));
+class _viewProfsScreenState extends State<viewProfsScreen> {
+  Database db = Database();
+  List usPostData = [];
+  void followCheck() {
+    for (var follower in followerList) {
+      if (profData['id'] == follower['id']) {
+        following = true;
+      }
     }
-    print(Commenters);
   }
 
-  @override
+  void follow() {
+    setState(() {
+      if (!following) {
+        following = true;
+        db.follow(userSelected['id'], profData['id']);
+        db.update(profData['id'],
+            followingCount: profData['followingCount'] + 1);
+        db.update(userSelected['id'],
+            followerCount: userSelected['followerCount'] + 1);
+        print("done");
+      }
+    });
+  }
+
+  void unfollow() {
+    if (following) {
+      setState(() {
+        following = false;
+        db.unfollow(userSelected['id'], profData['id']);
+        db.update(profData['id'],
+            followingCount: profData['followingCount'] - 1);
+        db.update(userSelected['id'],
+            followerCount: userSelected['followerCount'] - 1);
+        print("undone");
+      });
+    }
+  }
+
   void initState() {
+    following = false;
     super.initState();
-    initialise();
+    db.initialise();
+    db.readIndPostlink(userSelected['id']).then((value) => {
+          setState(() {
+            usPostData = value;
+          })
+        });
+
+    db.followerList(userSelected['id']).then((value) => followerList = value);
+    followCheck();
   }
 
   @override
   Widget build(BuildContext context) {
+    String fStat = (following) ? "Unfollow" : "Follow";
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -91,37 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.black,
                   ),
                   label: Text(
-                    "profData['username']",
+                    userSelected['username'],
                     style: TextStyle(color: Colors.black),
                   )),
-              IconButton(
-                onPressed: () {
-                  print(Commenters);
-                  Commenters = [];
-                },
-                icon: Icon(Icons.keyboard_arrow_down_rounded),
-                color: Colors.black,
-              )
             ],
           ),
         ),
-        actions: [
-          IconButton(
-            color: Colors.black,
-            onPressed: () {
-              try {
-                logOutInstance.signOut();
-                Navigator.of(context).pushNamed('/login');
-                profData = {};
-                indiPostData = [];
-                Commenters = [];
-              } catch (e) {
-                print(e);
-              }
-            },
-            icon: Icon(Icons.power_settings_new_rounded),
-          ),
-        ],
       ),
       body: Column(children: [
         Container(
@@ -139,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       backgroundColor: Colors.white,
                       child: CircleAvatar(
                         radius: 60,
-                        backgroundImage: NetworkImage("profData['dp_link']"),
+                        backgroundImage: NetworkImage(userSelected['dp_link']),
                       ),
                     ),
                   ),
@@ -154,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                profData["postCount"].toString(),
+                                userSelected["postCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -182,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                profData["followerCount"].toString(),
+                                userSelected["followerCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -210,7 +183,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                profData["followingCount"].toString(),
+                                userSelected["followingCount"].toString(),
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 20,
@@ -238,10 +211,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'profData["actualName"]',
+                      userSelected["actualName"],
                     ),
                     Text(
-                      'profData["bio"]',
+                      userSelected["bio"],
                     ),
                   ],
                 ),
@@ -251,11 +224,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/editprof');
-                  print(docs);
+                  if (!following)
+                    follow();
+                  else {
+                    unfollow();
+                  }
                 },
                 child: Text(
-                  "Edit Profile",
+                  fStat,
                   style: TextStyle(
                     color: Colors.black,
                   ),
@@ -273,7 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: GridView.builder(
             cacheExtent: 9,
             shrinkWrap: true,
-            itemCount: indiPostData.length,
+            itemCount: usPostData.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),
@@ -285,81 +261,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fit: BoxFit.cover,
                   width: 50,
                   height: 50,
-                  image:
-                      NetworkImage(indiPostData[index]['postUrl'].toString()),
+                  image: NetworkImage(usPostData[index]['postUrl'].toString()),
                 ),
               );
             },
           ),
         ),
       ]),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 20,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: (int) {},
-        items: [
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/home');
-              },
-              icon: Icon(Icons.home_filled),
-              color: Colors.black,
-            ),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/search');
-              },
-              icon: Icon(Icons.search_rounded),
-              color: Colors.black,
-            ),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/createPost');
-              },
-              icon: Icon(Icons.add_box_outlined),
-              color: Colors.black,
-            ),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/activity');
-              },
-              icon: Icon(Icons.favorite_border_rounded),
-              color: Colors.black,
-            ),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-              icon: CircleAvatar(
-                backgroundColor: Colors.black,
-                radius: 13,
-                child: CircleAvatar(
-                  radius: 12.5,
-                  backgroundColor: Colors.white,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/profile');
-                    },
-                    icon: CircleAvatar(
-                      radius: 11,
-                      backgroundImage: NetworkImage("profData['dp_link']"),
-                    ),
-                  ),
-                ),
-              ),
-              label: "")
-        ],
-      ),
     );
   }
 }

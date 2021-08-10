@@ -29,20 +29,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf0b553-3d84-4059-81d6-c2c93a70b3dc" name="Default Changelist" comment="Updated routes, separated different screens to files">
-      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/createposts.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/commentsView.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/searchProfs.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/viewProfs.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/app.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/database.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/activity.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/editprof.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/createposts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/createposts.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/launch.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/search.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test_proj/lib/src/screens/signup.dart" afterDir="false" />
     </list>
+    <list id="ace03722-838a-49f2-9a0e-b01454b0a49e" name="final Commit" comment="" />
+    <list id="b9090d6b-aa6d-453b-adce-1b1b7716117e" name="Revert &quot;final Commit&quot;" comment="" />
     <list id="df542ae6-61e0-437c-aa60-a241bd3957ca" name="Updated routes, separated different screens to files" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +73,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/test_proj/android/app" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -113,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627144602385</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Revert &quot;final Commit&quot;&#10;&#10;This reverts commit 5ed6fec1">
+      <created>1628611284973</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628611284973</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,7 +138,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated routes, separated different screens to files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated routes, separated different screens to files" />
+    <MESSAGE value="Revert &quot;final Commit&quot;&#10;&#10;This reverts commit 5ed6fec1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;final Commit&quot;&#10;&#10;This reverts commit 5ed6fec1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="2" key="#Plugins" timestamp="1626772017250">
@@ -151,6 +158,14 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="93" y="93" width="1095" height="535" key="AVDManager/0.0.1280.720@0.0.1280.720" timestamp="1626622792117" />
+    <state x="255" y="0" key="CommitChangelistDialog2" timestamp="1628611283635">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="255" y="0" key="CommitChangelistDialog2/0.0.1280.720@0.0.1280.720" timestamp="1628611283635" />
+    <state x="93" y="93" width="1095" height="535" key="DiffContextDialog" timestamp="1628612186437">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="93" y="93" width="1095" height="535" key="DiffContextDialog/0.0.1280.720@0.0.1280.720" timestamp="1628612186437" />
     <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1626603065441">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -171,25 +186,29 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1236" height="113" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1626620264054" />
-    <state x="142" y="6" key="SettingsEditor" timestamp="1626732100367">
+    <state x="142" y="6" key="SettingsEditor" timestamp="1628611624684">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="142" y="6" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1626732100367" />
-    <state x="490" y="270" key="VCS.ChangelistChooser" timestamp="1627144905965">
+    <state x="142" y="6" key="SettingsEditor/0.0.1280.720@0.0.1280.720" timestamp="1628611624684" />
+    <state x="490" y="270" key="VCS.ChangelistChooser" timestamp="1628611340754">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="490" y="270" key="VCS.ChangelistChooser/0.0.1280.720@0.0.1280.720" timestamp="1627144905965" />
-    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1626816239311">
+    <state x="490" y="270" key="VCS.ChangelistChooser/0.0.1280.720@0.0.1280.720" timestamp="1628611340754" />
+    <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1628612186437">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1626816239311" />
+    <state x="93" y="93" width="1095" height="535" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.720@0.0.1280.720" timestamp="1628612186437" />
+    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1628611473399">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="449" y="271" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1628611473399" />
     <state x="298" y="161" width="672" height="677" key="run.anything.popup" timestamp="1628013323726">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="298" y="161" width="672" height="677" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1628013323726" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1626773287951">
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1628611605294">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1626773287951" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1628611605294" />
   </component>
 </project>

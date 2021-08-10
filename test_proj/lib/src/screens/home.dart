@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_proj/src/screens/login.dart';
 
+import '../database.dart';
 
 final gridAssets = [
   "Assets/images/aloy.gif",
@@ -16,6 +18,7 @@ final gridAssets = [
   "Assets/images/i8.jpg",
   "Assets/images/i9.jpg"
 ];
+String cId = "";
 
 final story_data = List<String>.generate(20, (index) => "Contact ${index + 1}");
 
@@ -27,6 +30,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Database db = Database();
+  List docs = [];
+
+  void initState() {
+    super.initState();
+    db.initialise();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
               bool isLiked = false;
               var icon = Icons.favorite_border_rounded;
               var icolor = Colors.black;
+              TextEditingController txt = TextEditingController();
               return Column(
                 children: [
                   Container(
@@ -174,6 +186,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     icolor = Colors.pinkAccent;
                                     ScaffoldMessenger.of(context)
                                         .showSnackBar(likebar);
+                                    db.likedBy(
+                                        allPosts[index]['id'], profData['id']);
+                                    db.postUpdate(cId, -1,
+                                        allPosts[index]['likeCount'] + 1);
+                                    // db.likedByind(
+                                    //     allPosts[index]['id'],
+                                    //     profData['id'],
+                                    //     allPosts[index]['userId']);
                                   });
                                 } else {
                                   setState(() {
@@ -192,7 +212,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Container(width: 5),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              cId = allPosts[index]['id'];
+                            },
                             icon: Icon(
                               Icons.mode_comment_outlined,
                               size: 40,
@@ -201,7 +223,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 5,
                         ),
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              print(allPosts[index]);
+                              print(txt.text);
+                            },
                             icon: Icon(
                               Icons.arrow_forward,
                               size: 40,
@@ -233,13 +258,35 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.fromLTRB(15, 0, 20, 5),
                         child: TextButton(
                           child: Text(
-                              "View all ${allPosts[index]['commentCount'].toString()} comments",
+                            "View all ${allPosts[index]['commentCount'].toString()} comments",
                             style: TextStyle(
-                              color: Colors.grey.shade600,
-                              fontStyle: FontStyle.italic
-                            ),
+                                color: Colors.grey.shade600,
+                                fontStyle: FontStyle.italic),
                           ),
-                          onPressed: (){},
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/comview');
+                            cId = allPosts[index]['id'];
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: TextField(
+                          controller: txt,
+                          decoration:
+                              InputDecoration(hintText: "Write a comment..."),
+                        ),
+                        trailing: IconButton(
+                          icon: Icon(Icons.post_add_rounded),
+                          onPressed: () {
+                            setState(() {
+                              db.addCommentGlob(allPosts[index]['id'], txt.text,
+                                  profData['id']);
+                              db.postUpdate(allPosts[index]['id'],
+                                  allPosts[index]['commentCount'] + 1, -1);
+                              // db.addCommentInd(allPosts[index]['id'], txt.text,
+                              //     profData['id'], allPosts[index]['userId']);
+                            });
+                          },
                         ),
                       )
                     ],
@@ -259,17 +306,17 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/home');
               },
-              icon:Icon(Icons.home_filled),
+              icon: Icon(Icons.home_filled),
               color: Colors.black,
             ),
             label: "",
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/search');
               },
               icon: Icon(Icons.search_rounded),
@@ -279,7 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/createPost');
               },
               icon: Icon(Icons.add_box_outlined),
@@ -289,7 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed('/activity');
               },
               icon: Icon(Icons.favorite_border_rounded),
@@ -305,13 +352,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   radius: 12.5,
                   backgroundColor: Colors.white,
                   child: IconButton(
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pushNamed('/profile');
                     },
                     icon: CircleAvatar(
                       radius: 11,
-                      backgroundImage:
-                      NetworkImage(profData['dp_link']),
+                      backgroundImage: NetworkImage(profData['dp_link']),
                     ),
                   ),
                 ),

@@ -9,7 +9,6 @@ import 'package:permission_handler/permission_handler.dart';
 import '../database.dart';
 import 'login.dart';
 
-
 class CreatePostsScreen extends StatefulWidget {
   const CreatePostsScreen({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class CreatePostsScreen extends StatefulWidget {
 
 class _CreatePostsScreenState extends State<CreatePostsScreen> {
   TextEditingController _captionController = TextEditingController();
-  late String  _caption;
+  late String _caption;
   String postUrl = '';
 
   final FirebaseAuth loginInstance = FirebaseAuth.instance;
@@ -37,9 +36,10 @@ class _CreatePostsScreenState extends State<CreatePostsScreen> {
           })
         });
   }
-  ProfData(){
-    for (var prox in docs){
-      if (profData['email']== prox['email']){
+
+  ProfData() {
+    for (var prox in docs) {
+      if (profData['email'] == prox['email']) {
         profData = prox;
       }
     }
@@ -111,11 +111,14 @@ class _CreatePostsScreenState extends State<CreatePostsScreen> {
               onPressed: () {
                 _caption = _captionController.text;
                 ProfData();
-                db.update(profData['id'], postCount: profData['postCount']+1);
-                db.createPost(profData['username'],_caption,profData['id'],postUrl, profData['postCount']+1,profData['dp_link']);
+                db.update(profData['id'], postCount: profData['postCount'] + 1);
+                db.createPost(profData['username'], _caption, profData['id'],
+                    postUrl, profData['postCount'] + 1, profData['dp_link']);
+
                 Navigator.pushNamed(context, '/profile');
                 setState(() {
-                  postUrl = "https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/globals%2Fdefault_avatar.jpg?alt=media&token=6ce0405e-2bb3-492a-aec6-75866a0775d1";
+                  postUrl =
+                      "https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/globals%2Fdefault_avatar.jpg?alt=media&token=6ce0405e-2bb3-492a-aec6-75866a0775d1";
                   ProfData();
                 });
               },
@@ -153,27 +156,27 @@ class _CreatePostsScreenState extends State<CreatePostsScreen> {
                   height: 50,
                   width: 50,
                   child: Image(
-                    image: (postUrl == '') ?
-                    NetworkImage("https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/globals%2Fdefault_avatar.jpg?alt=media&token=6ce0405e-2bb3-492a-aec6-75866a0775d1") :
-                    NetworkImage(postUrl),
+                    image: (postUrl == '')
+                        ? NetworkImage(
+                            "https://firebasestorage.googleapis.com/v0/b/instacloneproj.appspot.com/o/globals%2Fdefault_avatar.jpg?alt=media&token=6ce0405e-2bb3-492a-aec6-75866a0775d1")
+                        : NetworkImage(postUrl),
                   )),
             ),
             Row(
               children: [
                 Expanded(
                   child: TextButton(
-                      onPressed: () {
-                        uploadPostImage();
-                      },
-                      child: Text(
-                        "Upload Image",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
+                    onPressed: () {
+                      uploadPostImage();
+                    },
+                    child: Text(
+                      "Upload Image",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueAccent
                     ),
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.blueAccent),
                   ),
                 ),
               ],
